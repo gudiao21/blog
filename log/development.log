@@ -1,0 +1,11 @@
+Started GET "/delete_vehicle?placa=1" for ::1 at 2023-05-16 09:19:28 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/delete_vehicle"):
+  
+Started GET "/" for ::1 at 2023-05-16 09:19:29 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/oem/.rvm/gems/ruby-3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/oem/.rvm/gems/ruby-3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.1ms | Allocations: 459)
+Completed 200 OK in 8ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 4328)
+
+
