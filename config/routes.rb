@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  #"get '/articles'" é mapeada para a ação 'index' de 'ArticlesController':
+  #"get '/articles'" é mapeada para(to) a ação 'index' de 'ArticlesController':
   get "/articles", to: "articles#index"
 end

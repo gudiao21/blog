@@ -9,3 +9,12 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 8ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 4328)
 
 
+Started GET "/articles" for ::1 at 2023-05-16 14:29:59 -0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 374)
+  Rendered layout layouts/application.html.erb (Duration: 261.2ms | Allocations: 90560)
+Completed 200 OK in 268ms (Views: 263.7ms | ActiveRecord: 0.0ms | Allocations: 95965)
+
+
