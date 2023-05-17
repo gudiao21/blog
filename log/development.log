@@ -18,3 +18,250 @@ Processing by ArticlesController#index as HTML
 Completed 200 OK in 268ms (Views: 263.7ms | ActiveRecord: 0.0ms | Allocations: 95965)
 
 
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArticles (20230516182348)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "articles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230516182348"]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-05-16 20:20:13.873301"], ["updated_at", "2023-05-16 20:20:13.873301"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mArticle Create (0.3ms)[0m  [1m[32mINSERT INTO "articles" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Hello Rails"], ["body", "I am on Rails!"], ["created_at", "2023-05-16 20:50:10.673814"], ["updated_at", "2023-05-16 20:50:10.673814"]]
+  [1m[36mTRANSACTION (44.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/articles" for ::1 at 2023-05-16 19:22:51 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 373)
+  Rendered layout layouts/application.html.erb (Duration: 40.7ms | Allocations: 34405)
+Completed 200 OK in 53ms (Views: 43.8ms | ActiveRecord: 0.0ms | Allocations: 40410)
+
+
+Started GET "/articles" for ::1 at 2023-05-16 19:23:30 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 373)
+  Rendered layout layouts/application.html.erb (Duration: 34.7ms | Allocations: 34450)
+Completed 200 OK in 43ms (Views: 36.9ms | ActiveRecord: 0.0ms | Allocations: 40455)
+
+
+Started GET "/articles" for ::1 at 2023-05-16 19:26:41 -0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 17.8ms | Allocations: 4271)
+  Rendered layout layouts/application.html.erb (Duration: 19.4ms | Allocations: 4345)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.0ms | Allocations: 5352)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Articles#index</h1>
+<p>Find me in app/views/articles/index.html.erb</p>
+<h1>Hello, Rails!</h1>
+<ul>
+    <%= article.title %>
+        <li>
+            <%= article.title %>
+        </li>
+    <% end %>
+</ul>        
+
+):
+1:    <h1>Articles#index</h1>
+2:    <p>Find me in app/views/articles/index.html.erb</p>
+3:    <h1>Hello, Rails!</h1>
+4:    <ul>
+5:        <%= article.title %>
+6:            <li>
+7:                <%= article.title %>
+8:            </li>
+9:        <% end %>
+10:    </ul>        
+  
+app/views/articles/index.html.erb:13: syntax error, unexpected `end', expecting end-of-input
+app/views/articles/index.html.erb:13: syntax error, unexpected `end', expecting end-of-input
+app/views/articles/index.html.erb:13: syntax error, unexpected `end', expecting end-of-input
+app/views/articles/index.html.erb:13: syntax error, unexpected `end', expecting end-of-input
+app/views/articles/index.html.erb:13: syntax error, unexpected `end', expecting end-of-input
+app/views/articles/index.html.erb:13: syntax error, unexpected `end', expecting end-of-input
+Started GET "/articles" for ::1 at 2023-05-16 19:27:00 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2110)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 2196)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 8148)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Articles#index</h1>
+<p>Find me in app/views/articles/index.html.erb</p>
+<h1>Hello, Rails!</h1>
+<ul>
+    <%= article.title %>
+        <li>
+            <%= article.title %>
+        </li>
+    <% end %>
+</ul>        
+
+):
+1:    <h1>Articles#index</h1>
+2:    <p>Find me in app/views/articles/index.html.erb</p>
+3:    <h1>Hello, Rails!</h1>
+4:    <ul>
+5:        <%= article.title %>
+6:            <li>
+7:                <%= article.title %>
+8:            </li>
+9:        <% end %>
+10:    </ul>        
+  
+app/views/articles/index.html.erb:13: syntax error, unexpected `end', expecting end-of-input
+app/views/articles/index.html.erb:13: syntax error, unexpected `end', expecting end-of-input
+app/views/articles/index.html.erb:13: syntax error, unexpected `end', expecting end-of-input
+app/views/articles/index.html.erb:13: syntax error, unexpected `end', expecting end-of-input
+app/views/articles/index.html.erb:13: syntax error, unexpected `end', expecting end-of-input
+app/views/articles/index.html.erb:13: syntax error, unexpected `end', expecting end-of-input
+Started GET "/articles" for ::1 at 2023-05-16 19:28:32 -0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:5
+  Rendered articles/index.html.erb within layouts/application (Duration: 56.5ms | Allocations: 19457)
+  Rendered layout layouts/application.html.erb (Duration: 94.2ms | Allocations: 53357)
+Completed 200 OK in 107ms (Views: 102.6ms | ActiveRecord: 2.3ms | Allocations: 54410)
+
+
+Started GET "/articles" for ::1 at 2023-05-16 19:29:09 -0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:7
+  Rendered articles/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 797)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 3474)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 0.1ms | Allocations: 4497)
+
+
+Started GET "/articles" for ::1 at 2023-05-16 19:35:05 -0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:7
+  Rendered articles/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 947)
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | Allocations: 3630)
+Completed 200 OK in 24ms (Views: 22.1ms | ActiveRecord: 1.3ms | Allocations: 4651)
+
+
+Started GET "/articles" for ::1 at 2023-05-16 19:39:01 -0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:7
+  Rendered articles/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 720)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 3399)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.2ms | Allocations: 4422)
+
+
+Started GET "/" for ::1 at 2023-05-16 20:15:47 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/oem/.rvm/gems/ruby-3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/oem/.rvm/gems/ruby-3.0.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.6ms | Allocations: 458)
+Completed 200 OK in 4ms (Views: 3.0ms | Allocations: 1368)
+
+
+Started GET "/articles" for ::1 at 2023-05-16 20:15:58 -0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:8
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 866)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3542)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.3ms | Allocations: 4554)
+
+
+Started GET "/articles" for ::1 at 2023-05-16 20:28:59 -0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:8
+  Rendered articles/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 866)
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 3544)
+Completed 200 OK in 25ms (Views: 23.5ms | ActiveRecord: 1.4ms | Allocations: 4556)
+
+
+Started GET "/articles/1" for ::1 at 2023-05-17 17:05:43 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 1.5ms | Allocations: 423)
+  Rendered layout layouts/application.html.erb (Duration: 43.2ms | Allocations: 34352)
+Completed 200 OK in 71ms (Views: 47.4ms | ActiveRecord: 0.5ms | Allocations: 58487)
+
+
+Started GET "/articles/1" for ::1 at 2023-05-17 17:09:39 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2397)
+Completed 200 OK in 9ms (Views: 4.5ms | ActiveRecord: 0.1ms | Allocations: 3167)
+
+
+Started GET "/articles" for ::1 at 2023-05-17 17:09:46 -0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:8
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 791)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 3166)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.1ms | Allocations: 3555)
+
+
+Started GET "/articles" for ::1 at 2023-05-17 17:13:28 -0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:8
+  Rendered articles/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 760)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 3435)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.1ms | Allocations: 4457)
+
+
+Started GET "/articles/1" for ::1 at 2023-05-17 17:13:35 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:10:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 139)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 2508)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.1ms | Allocations: 3330)
+
+

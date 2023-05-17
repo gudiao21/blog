@@ -1,3 +1,15 @@
 <h1>Articles#index</h1>
 <p>Find me in app/views/articles/index.html.erb</p>
 <h1>Hello, Rails!</h1>
+<hr>
+<br>
+<ul>
+    <%#Se eu colocar '<%= @articles.each do |article|', imprimir'um por um. %>
+    <% @articles.each do |article| %>
+        <li>
+            <a href="/articles/<%= article.id %>">
+                <%= article.title %>
+            </a>
+        </li>
+    <% end %>
+</ul>        
