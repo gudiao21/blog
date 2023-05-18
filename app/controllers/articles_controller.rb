@@ -29,9 +29,9 @@ class ArticlesController < ApplicationController
   end
   
   #O "update" de um 'resource' é muito semehante à criação de um recurso. Ambos são processos de várias etapas. Primeiro, o usuário solicita um formulário para editar os dados. Em seguida, o usuário envia o formulário. Se não houver erros, o 'resource' será atualizado. Caso contrário, o formulário é reexibido com mensagens de erro e o processo é repetido.
-  #Essas etapas são tratadas convencionalmente pelas ações de 'edit' e 'update' de um controlador. Vamos adicionar uma implementação típica dessas 'actions' a 'app/controllers/articles_controller.rb'
-  #Note que as actions 'edit' e 'update' se assemelham às 'actions' 'new' e 'create'.
-  #A 'action' de 'edit' busca o 'article' do banco de dados e o armazena em '@article' para qu possa ser usado ao criar o formulário. Por padrão, a 'action' de 'edit' renderizará 'app/views/articles/edit.html.erb'.
+  #Essas etapas são tratadas convencionalmente pelas 'actions' de 'edit' e 'update' de um controlador. Vamos adicionar uma implementação típica dessas 'actions' a 'app/controllers/articles_controller.rb'
+  #Note que as 'actions' 'edit' e 'update' se assemelham às 'actions' 'new' e 'create'.
+  #A 'action' de 'edit' busca o 'article' do banco de dados e o armazena em '@article' para que possa ser usado ao criar o formulário. Por padrão, a 'action' de 'edit' renderizará 'app/views/articles/edit.html.erb'.
   #A 'action' de 'update' (re)busca o artigo do banco de dados e tenta atualizá-lo com os dados do formulário enviado filtrado por 'article_params'. Se nenhuma 'validation' falha e o 'update' for bem-sucedido, a 'action redireciona o navegador para a página do 'article'. Caso contrário, a 'action' reexibe o formulário com mensagens de erro, renderizando assim 'app/views/articles/edit.html.erb'.
 
   def edit
