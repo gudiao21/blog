@@ -1,10 +1,11 @@
 <h1>New Article</h1>
 
-<%= form_with modl: @article do |form| %>
+<%= form_with model: @article do |form| %>
     <div>
         <%= form.label :title %><br>
         <%= form.text_field :title %>
         <!--Com nossas 'validations' em vigor, vamos modificar 'app/views/articles/new.html.erb' para exibir qualquer mensagem de erro para 'title' e 'body': -->
+        <!--O método 'full_messages_for' retorna um 'Hash' de mensagens de erro amigáveis para um atributo especificado. Se não houver erros para esse atributo, a matriz estará vazia. -->
         <% @article.errors.full_messages_for(:title).each do |message| %>
             <div><%= message %></div>
         <% end %>    
@@ -19,6 +20,6 @@
     </div>
 
     <div>
-        <%= form.submit %>
+        <%= form.submit %> <!--É aqui que se é adicionado o botão "Create Article"-->
     </div>
 <% end %>
