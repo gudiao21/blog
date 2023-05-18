@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+ 
   def index
     @articles = Article.all
   end
@@ -46,7 +47,7 @@ class ArticlesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
-
+  end
   #Os dados de 'formulário' enviados são colocados no hash de parâmetros, juntamente com os parâmetros de rota capturados. Assim, a ação 'create' pode acessar o 'title' enviado por meio de 'params[:article][:title]' e o 'body' enviado por meio de 'params[:article][:body]'. Poderíamos passar esses valores individualmente para 'Articles.new, mas isso seria detalhado e possivelmente sujeito a erros. E ficaria pior à medida que adicionássemos mais campos.
   #Passaremos um único Hash que contém os valores. No entanto, ainda devemos especificar quais valores são permitidos nesse Hash. Caso contrário, um usuário mal intencionado poderia enviar campos de formulário extras e sobrescrever dados privados. De fato, se passarmos o Hash 'params[:article]' não filtrado diretamente pára 'Article.new, o Rails gerará um ForbiddenAttributesError para nos alertar sobre o problema. Portanto, usaremos um recurso do Rails chamado 'Strong Parameters' para filtrar os parâmetros. Pense nisso como digitação forte para parâmetros:
     private

@@ -534,3 +534,62 @@ Processing by ArticlesController#new as HTML
 Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.0ms | Allocations: 4880)
 
 
+Started GET "/articles/show" for ::1 at 2023-05-18 20:38:43 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/oem/RubymineProjects/blog/app/controllers/articles_controller.rb:58: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/articles_controller.rb:58: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/articles_controller.rb:58: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/articles_controller.rb:58: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/articles/1/edit" for ::1 at 2023-05-18 20:39:19 -0300
+  
+SyntaxError (/home/oem/RubymineProjects/blog/app/controllers/articles_controller.rb:58: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/articles_controller.rb:58: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/articles_controller.rb:58: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/articles_controller.rb:58: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/articles/1/edit" for ::1 at 2023-05-18 20:39:48 -0300
+  
+SyntaxError (/home/oem/RubymineProjects/blog/app/controllers/articles_controller.rb:58: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/articles_controller.rb:58: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/articles_controller.rb:58: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/articles_controller.rb:58: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/articles/show" for ::1 at 2023-05-18 20:42:44 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:11:in `show'
+Completed 404 Not Found in 8ms (ActiveRecord: 0.7ms | Allocations: 6869)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=show):
+  
+app/controllers/articles_controller.rb:11:in `show'
+Started GET "/articles/show" for ::1 at 2023-05-18 20:43:13 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:11:in `show'
+Completed 404 Not Found in 8ms (ActiveRecord: 0.6ms | Allocations: 6790)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=show):
+  
+app/controllers/articles_controller.rb:11:in `show'
+Started GET "/articles/show" for ::1 at 2023-05-18 20:50:16 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"show"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:11:in `show'
+Completed 404 Not Found in 7ms (ActiveRecord: 1.2ms | Allocations: 1058)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=show):
+  
+app/controllers/articles_controller.rb:11:in `show'
