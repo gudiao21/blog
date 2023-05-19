@@ -1,0 +1,24 @@
+<!--Nosso formulário do 'edit' terá a mesma aparência do nosso formulário 'new'. Até o código será o mesmo, graças ao construtor de formulários Rails(form Builder) e ao roteamento engenhoso(resourceful routing). O 'form builder' configura automaticamente o formulário para fazer o tipo apropriado de solicitação, com base no fato de o objeto model ter sido salvo anteriormente.
+Como o código será o mesmo, vamos fatorá-lo em uma visão compartilhada chamada 'parcial'. Vamos criar app/views/articles/_form.html.erb' com o seguinte conteúdo: -->
+<%= form_with model: article do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %><br>
+    <% article.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+<!-- O código acima é igual ao nosso formulário em 'app/views/articles/new.html.erb', exceto que todas as ocorrências de '@article' foram substituídas por 'article'. Como os 'partials' são códigos compartilhados, a melhor prática é que eles não dependam de variáveis de instância específicas definidas por uma 'action' do controlador. Em vez disso, passaremos o 'artical' para a 'partial' como uma variável local.-->
