@@ -5,4 +5,9 @@
 <ul>
     <!--Linkando essa view 'show.html.erb' com a view 'app/views/articles/edit.html.erb':-->
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <!--Logo abaixo, usamos a opção 'data' para definir os atributos 'HTML data-turbo-method e data-turbo-confirm' do link 'Destroy'. Ambos os atributos se conectam ao Turbo, que é incluído por padrão em novos aplicativos Rails. O "data-turbo-method='delete'" fará com que o link faça uma solicitação DELETE em vez de uma solicitação 'get'. O "data-turbo-confirm='Tem certeza?" fará com que uma caixa de diálogo de confirmação apareça quando o link for clicado. Se o usuário cancelar a caixa de diálogo, a solicitação será abortada: -->
+  <li><%= link_to "Destroy", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                    } %></li>
 </ul>

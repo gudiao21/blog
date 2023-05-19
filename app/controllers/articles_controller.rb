@@ -53,6 +53,14 @@ class ArticlesController < ApplicationController
   #Exluir um recurso é um processo mais simples do que criá-lo(create) ou atualizá-lo(update). Requer apenas uma rota(route) e uma 'action' do controlador. E nosso roteamento engenhoso ('resourceful routing', através de 'resources :articles) já fornece a rota, que mapeia as solicitações 'DELETE /articles/:id' para a action 'destroy' de ArticlesController.
   #Então, vamos adicionar uma action de 'destroy' típica a 'app/controllers/articles_controller.rb', abaixo da action de 'update':
 
+  def destroy
+    @article = Article.find(params[:id]) #A 'action' 'destroy' busca um 'article' no banco de dados e chama o 'destroy' nele.
+    @article.destroy #Em seguida, ele redireciona o navegador para o caminho raiz com o código de status 303 See Other.
+    redirect_to root_path, status: :see_other #Optamos por redirecionar para o caminho raiz porque esse é o nosso principal ponto de acesso para 'articles'. Mas, em outras circunstâncias, você pode optar por redirecionar para, por exemplo, 'articles_path'.
+  end
+
+
+  #---------------------------------------------------------------------------------------------------
   #Os dados de 'formulário' enviados são colocados no hash de parâmetros, juntamente com os parâmetros de rota capturados. Assim, a ação 'create' pode acessar o 'title' enviado por meio de 'params[:article][:title]' e o 'body' enviado por meio de 'params[:article][:body]'. Poderíamos passar esses valores individualmente para 'Articles.new, mas isso seria detalhado e possivelmente sujeito a erros. E ficaria pior à medida que adicionássemos mais campos.
   #Passaremos um único Hash que contém os valores. No entanto, ainda devemos especificar quais valores são permitidos nesse Hash. Caso contrário, um usuário mal intencionado poderia enviar campos de formulário extras e sobrescrever dados privados. De fato, se passarmos o Hash 'params[:article]' não filtrado diretamente pára 'Article.new, o Rails gerará um ForbiddenAttributesError para nos alertar sobre o problema. Portanto, usaremos um recurso do Rails chamado 'Strong Parameters' para filtrar os parâmetros. Pense nisso como digitação forte para parâmetros:
     private
