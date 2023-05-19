@@ -10,5 +10,12 @@ Rails.application.routes.draw do
   #get"/articles/:id", to: "articles#show"
 
   #O Rails fornece um método de rotas chamado 'resources', que mapeia todas as rotas convencionais para uma coleção de recursos, como artigos. Portanto, antes de prosseguirmos para as seções 'C', 'U' e 'D', vamos substituir as duas rotas 'get' em 'config/routes.rb' por 'resources':
-  resources :articles
+  
+  #Isso abaixo cria 'comments' como um recurso aninhado nos artigos. Está é outra parte da captura da relação herárquica que existe entre 'articles' e 'comments':
+
+  #Após fazer essa alteração abaixo, poderemos criar o 'controler' correspondente através do comando 'rails generate controler Comments' no shell de comando.
+  root "articles#index"
+  resources :articles do
+    resources :comments
+  end
 end
