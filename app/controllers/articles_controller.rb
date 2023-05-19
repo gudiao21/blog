@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
     #'params[:id]' tem que ter sido mencionado em 'routes.rb', em: get"/articles/:id", to: "articles#show"
     #A Action 'show' chama 'Article.find' com o 'id' capturado pelo parâmetro de rota. O 'article' retonado é armazenado na variável de instância '@article', portanto, é acessível pela visualização. Por padrão, a action 'show renderizará 'app/views/articles/show.html.erb'.
     @article = Article.find(params[:id])
+    puts "ID do artigo: #{@article_id}"
   end
   #Agora passamos para o 'C'(Create) do CRUD. Normalmente, em aplicativos da Web, a criação de um novo recurso é um processo de várias etapas. Primeiro, o usuário solicita um formulário para preencher. Em seguida, o usuário envia o formulário. Se não houver erros, o recurso será criado e algum tipo de confirmação será exibida. Caso contrário, o formulário é reexibido com mensagen de erro e o processo é repetido.
   #Em um aplicativ oRails, essas etapas são tratadas convencionalmente pelas ações 'new' e 'create' de um controlador. Vamos adicionar uma implementação típica dessas ações em 'app/controllers/articles_controller.rb, abaixo da ação 'show':
@@ -48,6 +49,10 @@ class ArticlesController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
+  #Exluir um recurso é um processo mais simples do que criá-lo(create) ou atualizá-lo(update). Requer apenas uma rota(route) e uma 'action' do controlador. E nosso roteamento engenhoso ('resourceful routing', através de 'resources :articles) já fornece a rota, que mapeia as solicitações 'DELETE /articles/:id' para a action 'destroy' de ArticlesController.
+  #Então, vamos adicionar uma action de 'destroy' típica a 'app/controllers/articles_controller.rb', abaixo da action de 'update':
+
   #Os dados de 'formulário' enviados são colocados no hash de parâmetros, juntamente com os parâmetros de rota capturados. Assim, a ação 'create' pode acessar o 'title' enviado por meio de 'params[:article][:title]' e o 'body' enviado por meio de 'params[:article][:body]'. Poderíamos passar esses valores individualmente para 'Articles.new, mas isso seria detalhado e possivelmente sujeito a erros. E ficaria pior à medida que adicionássemos mais campos.
   #Passaremos um único Hash que contém os valores. No entanto, ainda devemos especificar quais valores são permitidos nesse Hash. Caso contrário, um usuário mal intencionado poderia enviar campos de formulário extras e sobrescrever dados privados. De fato, se passarmos o Hash 'params[:article]' não filtrado diretamente pára 'Article.new, o Rails gerará um ForbiddenAttributesError para nos alertar sobre o problema. Portanto, usaremos um recurso do Rails chamado 'Strong Parameters' para filtrar os parâmetros. Pense nisso como digitação forte para parâmetros:
     private
