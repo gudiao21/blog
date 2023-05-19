@@ -9,8 +9,16 @@ class ArticlesController < ApplicationController
     #'params[:id]' tem que ter sido mencionado em 'routes.rb', em: get"/articles/:id", to: "articles#show"
     #A Action 'show' chama 'Article.find' com o 'id' capturado pelo parâmetro de rota. O 'article' retonado é armazenado na variável de instância '@article', portanto, é acessível pela visualização. Por padrão, a action 'show renderizará 'app/views/articles/show.html.erb'.
     @article = Article.find(params[:id])
-    puts "ID do artigo: #{@article_id}"
+
+    #Esse condicional abaixo foi recomendado pelo 'chatGPT', pois estava dando erro 'ActiveRecord: :RecordNotFound (Couldn't find Article with 'id'=2):
+    if @article.nil?
+      flahs[:error] = "Article not found"
+      redirect_to articles_path
+    else
+      @articles = Article.where.not(id: @article.id)
+    end
   end
+  
   #Agora passamos para o 'C'(Create) do CRUD. Normalmente, em aplicativos da Web, a criação de um novo recurso é um processo de várias etapas. Primeiro, o usuário solicita um formulário para preencher. Em seguida, o usuário envia o formulário. Se não houver erros, o recurso será criado e algum tipo de confirmação será exibida. Caso contrário, o formulário é reexibido com mensagen de erro e o processo é repetido.
   #Em um aplicativ oRails, essas etapas são tratadas convencionalmente pelas ações 'new' e 'create' de um controlador. Vamos adicionar uma implementação típica dessas ações em 'app/controllers/articles_controller.rb, abaixo da ação 'show':
   #Quando visitamos 'http://3000/articles/new, a solicitação 'get /articles/new é mapeada para a nova 'action'. A nova 'action' não tenta salvar '@article'. Portanto, as validações não são verificadas e não haverá ensagens de erro.
