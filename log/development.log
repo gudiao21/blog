@@ -1001,3 +1001,71 @@ Completed 404 Not Found in 8ms (ActiveRecord: 0.2ms | Allocations: 904)
 ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=2):
   
 app/controllers/articles_controller.rb:11:in `show'
+Started GET "/articles/2" for ::1 at 2023-05-19 13:16:30 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:11:in `show'
+Completed 404 Not Found in 7ms (ActiveRecord: 0.5ms | Allocations: 6798)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=2):
+  
+app/controllers/articles_controller.rb:11:in `show'
+Started GET "/articles/" for ::1 at 2023-05-19 13:16:40 -0300
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:8
+  Rendered articles/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 16153)
+  Rendered layout layouts/application.html.erb (Duration: 51.6ms | Allocations: 50022)
+Completed 200 OK in 54ms (Views: 52.4ms | ActiveRecord: 1.2ms | Allocations: 51124)
+
+
+Started GET "/articles/1" for ::1 at 2023-05-19 13:16:44 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 350)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 2718)
+Completed 200 OK in 13ms (Views: 6.6ms | ActiveRecord: 0.3ms | Allocations: 3599)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-19 13:16:59 -0300
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 5.9ms | Allocations: 1166)
+  Rendered articles/new.html.erb within layouts/application (Duration: 55.0ms | Allocations: 7414)
+  Rendered layout layouts/application.html.erb (Duration: 65.7ms | Allocations: 9599)
+Completed 200 OK in 70ms (Views: 68.0ms | ActiveRecord: 0.0ms | Allocations: 10014)
+
+
+Started GET "/articles/1" for ::1 at 2023-05-19 13:17:23 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 1.5ms | Allocations: 352)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 3024)
+Completed 200 OK in 20ms (Views: 15.1ms | ActiveRecord: 0.2ms | Allocations: 4510)
+
+
+Started GET "/articles/new" for ::1 at 2023-05-19 13:17:35 -0300
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (Duration: 7.9ms | Allocations: 1158)
+  Rendered articles/new.html.erb within layouts/application (Duration: 22.7ms | Allocations: 2674)
+  Rendered layout layouts/application.html.erb (Duration: 47.7ms | Allocations: 4858)
+Completed 200 OK in 53ms (Views: 51.4ms | ActiveRecord: 0.0ms | Allocations: 5240)
+
+
